@@ -1,0 +1,100 @@
+<!doctype html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+	th:replace="base::layout(~{::section})">
+<head>
+
+
+<title>Hello, world!</title>
+</head>
+<body>
+
+	<section>
+
+
+
+		<div class="container my-5">
+			<div class="row">
+				<div class="col-md-4 offset-md-4" style="background: white;">
+
+					<h3 class="my-4 text-center">Register Your Account</h3>
+
+
+					<form th:action="@{/register}" method="post" th:object="${user}"
+						enctype="multipart/form-data">
+						
+						<div class="alert alert-danger alert-dismissible fade show"
+							role="alert" th:each="e : ${#fields.errors()}">
+							<strong>Warning !</strong> <span th:text="${e}"></span>
+							
+							
+							<button type="button" class="btn-close" data-bs-dismiss="alert"
+								aria-label="Close"></button>
+						</div>
+
+
+					
+
+
+						<div class="mb-3">
+							<label for="exampleFormCorm-label1">Name </label> <input
+								type="text" class="form-control" id="exampleFormControlInput12"
+								name="name" th:value="${user.name}" placeholder="Your Name here">
+						</div>
+
+
+						<div class="mb-3">
+							<label for="exampleFormControlInput12" class="form-label">Email
+								address</label> <input type="email" class="form-control" name="email"
+								th:value="${user.email}" id="exampleFormControlInput1"
+								placeholder="name@example.com">
+						</div>
+
+
+
+
+
+
+
+						<div class="mb-3">
+							<label for="exampleFormControlInput1" class="form-label">Image
+							</label> <input type="file" class="form-control" name="perofileImage"
+								id="exampleFormControlInput1" placeholder="Your profile image">
+						</div>
+
+						<div class="mb-3">
+							<label for="exampleFormControlTextarea1" class="form-label">About
+							</label>
+							<textarea class="form-control" id="exampleFormControlTextarea1"
+								th:value="${user.about}" rows="3"></textarea>
+						</div>
+
+
+						<div class="mb-3">
+							<label for="exampleFormControlInput12" class="form-label">Password
+							</label> <input type="password" class="form-control" name="password"
+								th:value="${user.password}" id="exampleFormControlInput1"
+								placeholder="Password">
+						</div>
+
+
+						<div class="mb-3">
+							<input type="submit" class="form-control btn btn-primary"
+								id="exampleFormControlInput1">
+						</div>
+
+					</form>
+
+				</div>
+
+			</div>
+		</div>
+
+
+
+
+	</section>
+
+
+
+</body>
+</html>

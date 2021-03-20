@@ -1,0 +1,200 @@
+<!doctype html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+	th:replace="user/base::layout(~{::section})">
+<head>
+
+
+<title>Hello, world!</title>
+</head>
+<body>
+
+	<section>
+
+		<div class="card m-5">
+			<div class="card-body">
+				<h1 class="text-center">Add Contact</h1>
+
+				<div class="container-fluid mt-1">
+					<div class="row">
+						<div class="col-md-6 offset-md-3">
+							<form th:action="@{/user/process-contact}" th:object="${contact}"
+								enctype="multipart/form-data" method="post" class="mtb-2">
+								<!--    -->
+
+
+								<!-- alert for validation -->
+								<div class="msgbox container" th:if="${message}">
+									<div class="alert alert-success text-center" role="alert">
+										<strong>Coguratulation !</strong> <span th:text="${message}"></span>
+
+									</div>
+								</div>
+								
+								<!-- alert for validation -->
+								<div class="msgbox container" th:if="${warning}">
+									<div class="alert alert-danger text-center" role="alert">
+										<strong>Warning !</strong> <span th:text="${message}"></span>
+
+									</div>
+								</div>
+
+								
+									<!-- alert for validation -->
+							<div class="alert alert-danger alert-dismissible fade show"
+								role="alert" th:each="e :${#fields.errors}">
+								<strong>Warning!</strong> <span th:text="${e}"></span>
+								<button type="button" class="btn-close" data-bs-dismiss="alert"
+									aria-label="Close"></button>
+							</div>
+							<!-- end alert for validation -->
+							
+
+
+
+
+								<!-- 							first name -->
+
+
+								<div class="input-group">
+									<div class="input-group-prepend">
+										<div class="input-group-text p-3">
+											<i class="fa fa-plus"></i>
+
+										</div>
+									</div>
+
+
+									<input type="text" id="firstname" name="name" value="Name Example"
+										placeholder="Enter Name here" class="form-control" />
+								</div>
+
+
+								<!-- 							second name -->
+
+
+								<div class="input-group mt-3">
+									<div class="input-group-prepend">
+										<div class="input-group-text p-3">
+											<i class="fa fa-plus"></i>
+
+										</div>
+									</div>
+
+
+									<input type="text" id="secondName" name="secondName" value="Second Name Example"
+										placeholder="Enter second Name here" class="form-control" />
+								</div>
+
+								<!-- 							email name -->
+
+
+								<div class="input-group mt-3">
+									<div class="input-group-prepend">
+										<div class="input-group-text p-3">
+											<i class="fas fa-envelope-open"></i>
+
+										</div>
+									</div>
+
+
+									<input type="email" id="email" name="email" value="Email@Example.example"
+										placeholder="Enter email here" class="form-control" />
+								</div>
+
+
+
+
+								<!-- 							phone name -->
+
+
+								<div class="input-group mt-3">
+									<div class="input-group-prepend">
+										<div class="input-group-text p-3">
+											<i class="fa fa-phone-alt"></i>
+
+										</div>
+									</div>
+
+
+									<input type="number" id="phone" name="phone" value="1234567890"
+										placeholder="Enter phone here" class="form-control" />
+								</div>
+
+								<!-- 							image name -->
+
+
+								<div class="input-group mt-3">
+									<div class="input-group-prepend">
+										<div class="input-group-text p-3">
+											<i class="fas fa-camera"></i>
+
+										</div>
+									</div>
+
+
+									<div class="custom-file">
+										<input type="file" id="image" name="profileImage"
+											placeholder="Enter image here" class="form-control" />
+									</div>
+								</div>
+
+
+								<!-- 							work name -->
+
+
+								<div class="input-group mt-3">
+									<div class="input-group-prepend">
+										<div class="input-group-text p-3">
+											<i class="fas fa-briefcase"></i>
+
+										</div>
+									</div>
+
+
+									<input type="text" id="work" name="work" value="Work Example"
+										placeholder="Enter work here" class="form-control" />
+								</div>
+								<!-- 							about name -->
+
+
+								<div class="input-group mt-3">
+									<div class="input-group-prepend">
+										<div class="input-group-text p-3">
+											<i class="fas fa-info-circle"></i>
+
+										</div>
+									</div>
+									<textarea name="about" rows="5" cols="60" value="About Example" id="mytextarea"> </textarea>
+
+								</div>
+
+								<div class="container mt-5 text-center">
+									<button type="submit" class="btn btn-primary">Save
+										Contact</button>
+									<button type="reset" class="btn btn-warning">Reset</button>
+
+								</div>
+
+
+
+							</form>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+
+
+
+<script src="https://cdn.tiny.cloud/1/no-api-key/tinymce/5/tinymce.min.js" referrerpolicy="origin"></script>
+ <script>
+      tinymce.init({
+        selector: '#mytextarea'
+      });
+    </script>
+	</section>
+
+
+
+</body>
+</html>

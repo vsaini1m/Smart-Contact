@@ -1,0 +1,222 @@
+<!doctype html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+	th:replace="user/base::layout(~{::section})">
+<head>
+
+
+<title>Hello, world!</title>
+</head>
+<body>
+
+	<section>
+
+
+
+		<div class="card m-2">
+			<div class="card-body">
+
+				<div th:if="${successMsg}"
+					class="alert alert-success alert-dismissible fade show text-center"
+					role="alert">
+					<strong>Conguratulation!</strong> <span th:text="${successMsg}"></span>
+					</div>
+
+
+				<div th:if="${errorMsg}"
+					class="alert alert-danger alert-dismissible fade show text-center" role="alert"
+					>
+					<strong>Warning!</strong> <span th:text="${errorMsg}"></span>
+					
+				</div>
+				
+				
+
+
+
+
+
+				<p class="text-center">
+
+					<img style="border-radius: 50%; width: 150px; height: 150px"
+						th:src="@{'/img/user/'+${user.image}}" alt="" />
+
+
+				</p>
+
+				<div class="text-center">
+					<form th:action="@{/user/updatePerofileImage}"
+						enctype="multipart/form-data" method="post">
+
+						<input type="file" name="profileImage">
+						<button class="btn btn-warning a-btn-slide-text m-1">
+							<i class="fas fa-cloud-upload-alt"></i> <span><strong>Update
+									Profile Image</strong></span>
+						</button>
+
+
+
+					</form>
+
+
+
+
+
+				</div>
+
+
+
+
+
+
+				<form class="m-3" th:action="@{/user/updateProfile}"
+					th:if="${user.enabled}" enctype="multipart/form-data" method="post"
+					th:object="${user}">
+					<table class="table table-hover table-striped text-center">
+						<thead>
+							<tr>
+								<th scope="col">Name</th>
+								<th scope="col"><input type="text" name="name"
+									th:value="${user.name}" class="form-control"
+									id="exampleInputName1"></th>
+
+							</tr>
+						</thead>
+						<tbody>
+
+							<tr>
+								<th scope="row">Email</th>
+								<td><input type="email" class="form-control" name="email"
+									th:value="${user.email}" id="exampleInputEmail1"
+									aria-describedby="emailHelp"></td>
+
+							</tr>
+							<tr>
+								<th scope="row">About</th>
+								<td><input type="text" class="form-control" name="about"
+									th:value="${user.about}" id="exampleInputEmail1"
+									aria-describedby="emailHelp"></td>
+
+							</tr>
+							<tr>
+								<td scope="row">Active</td>
+								<td th:if="${user.enabled}" 
+									style="text-align: center;  color: green">Active</td>
+								<td th:unless="${user.enabled}" class="btnAni bulletAni"
+									style="text-align: center;  color: red">Blocked</td>
+
+							</tr>
+
+
+
+						</tbody>
+					</table>
+
+					<p class="text-center">
+						<button type="submit" class="btn btn-primary">Register</button>
+						<button type="reset" class="m-3 btn btn-warning">Reset</button>
+					</p>
+
+				</form>
+
+
+				<table class="table table-hover table-striped text-center"
+					th:unless="${user.enabled}">
+					<thead>
+						<tr>
+							<th scope="col">Name</th>
+							<th scope="col" th:text="${user.name}"></th>
+
+						</tr>
+					</thead>
+					<tbody>
+
+						<tr>
+							<th scope="row">Email</th>
+							<td th:text="${user.email}"></td>
+
+						</tr>
+						<tr>
+							<th scope="row">About</th>
+							<td th:text="${user.about}"></td>
+
+						</tr>
+						<tr>
+
+							<td colspan="2" class="btnAni bulletAni"
+								style="text-align: center; color: white">Blocked</td>
+
+						</tr>
+
+
+					</tbody>
+				</table>
+
+
+			</div>
+
+
+
+
+
+		</div>
+
+
+
+		<div class="card m-2 bg-light">
+			<div class="card-body">
+
+				<h2 class="text-center">Change Password</h2>
+
+
+
+
+				<form th:action="@{/user/changePassword}">
+
+					<table class="table table-hover table-striped text-center">
+						<thead>
+							<tr>
+								<th scope="col">Old Password</th>
+								<th scope="col"><input type="text"
+									class="form-control btnAni" name="oldPassword"
+									 id="exampleInputEmail1"
+									aria-describedby="emailHelp"></th>
+
+							</tr>
+						</thead>
+						<tbody>
+
+							<tr>
+								<th scope="row">New Password</th>
+								<td><input type="text"
+									class="form-control btnAni text-center" name="newPassword"
+									id="exampleInputEmail1" aria-describedby="emailHelp"></td>
+
+							</tr>
+
+							<tr>
+								<td></td>
+								<td>
+									<button class="btn btn-primary btnAni ">Change
+										Password</button>
+								</td>
+
+							</tr>
+
+
+						</tbody>
+					</table>
+
+				</form>
+
+			</div>
+		</div>
+
+
+
+
+	</section>
+
+
+
+</body>
+</html>

@@ -1,0 +1,86 @@
+<!doctype html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+	th:replace="user/base::layout(~{::section})">
+<head>
+
+
+<title>Hello, world!</title>
+</head>
+<body>
+
+	<section>
+
+
+
+		<div class="card m-2">
+			<div class="card-body">
+
+				<div class="contact" th:if="${contact}">
+
+
+
+
+					<p class="text-center">
+
+						<img style="border-radius: 50%; width: 150px; height: 150px"
+							th:src="@{'/img/contact/'+${contact.image}}" alt="" />
+
+
+					</p>
+
+					<p class="text-center">
+						<span style="text-transform: uppercase;" th:text="${contact.name}"></span>(
+						<span th:text="${contact.secondName}"></span> )
+					</p>
+					<p class="text-center">
+						<a href="#" class="btn btn-warning a-btn-slide-text"
+							th:href="@{'/user/update/'+${contact.id}}"> <i
+							class="fas fa-cloud-upload-alt"></i> <span><strong>Edit</strong></span>
+						</a>
+					</p>
+
+					<table class="table text-center table-hover">
+						<tr scope="col">
+							<th scope="col">Email</th>
+							<td scope="col" th:text="${contact.email}"></td>
+						</tr>
+
+						<tr>
+							<th>Phone</th>
+							<td th:text="${contact.phone}"></td>
+						</tr>
+
+
+						<tr>
+							<th>Work</th>
+							<td th:text="${contact.work}"></td>
+						</tr>
+
+
+						<tr>
+
+							<td th:text="${contact.about}" colspan="2"></td>
+						</tr>
+					</table>
+
+				</div>
+
+				<div class="contact text-center" th:unless="${contact}">
+					<h3>Contact not present</h3>
+
+				</div>
+
+
+			</div>
+		</div>
+
+
+
+
+
+	</section>
+
+
+
+</body>
+</html>

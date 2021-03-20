@@ -1,0 +1,113 @@
+<!doctype html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+	th:replace="user/base::layout(~{::section})">
+<head>
+
+
+<title>Hello, world!</title>
+</head>
+<body>
+
+	<section>
+
+
+
+		<div class="card m-2">
+			<div class="card-body">
+
+
+
+				<p class="text-center">
+
+					<img style="border-radius: 50%; width: 150px; height: 150px"
+						th:src="@{'/img/user/'+${user.image}}" alt="" />
+
+
+				</p>
+				<table class="table table-hover table-striped text-center">
+					<thead>
+						<tr>
+							<th scope="col">Name</th>
+							<th scope="col" th:text="${user.name}"></th>
+
+						</tr>
+					</thead>
+					<tbody>
+
+						<tr>
+							<th scope="row">Email</th>
+							<td th:text="${user.email}"></td>
+
+						</tr>
+						<tr>
+							<th scope="row">About</th>
+							<td th:text="${user.about}"></td>
+
+						</tr>
+						<tr>
+							<td colspan="2" th:if="${user.enabled}" class="btnAni bulletAni"
+								style="text-align: center; background: green; color: white">Active</td>
+							<td colspan="2" th:unless="${user.enabled}"
+								class="btnAni bulletAni"
+								style="text-align: center; background: red; color: white">Blocked</td>
+
+						</tr>
+
+
+					</tbody>
+				</table>
+
+			</div>
+
+
+
+		</div>
+
+		<!-- sectioon 2 -->
+
+
+		<div class="card m-2">
+			<div class="card-body">
+
+
+				<h2 class="text-center">Add Contacts on cloud</h2>
+
+				<table class="table table-hover table-striped text-center">
+					<thead>
+
+						<tr>
+							<th scope="col"><a th:href="@{/user/add-contact}"
+								type="button" class="btn btn-info btnAni">Add More Contact
+									on Cloud</a></th>
+
+
+						</tr>
+					</thead>
+
+				</table>
+				<p class="text-center">
+
+					<img style="border-radius: 10%; width: 50%; height: 150px"
+						th:src="@{/img/image/contact.png}" alt="" />
+
+
+				</p>
+
+
+			</div>
+
+
+
+		</div>
+
+
+
+
+
+
+	</section>
+
+
+
+</body>
+</html>
